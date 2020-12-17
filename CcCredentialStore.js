@@ -18,6 +18,10 @@ class CcCredentialStore {
   }
 
   get() {
+    if (!this.isSupported) {
+      return Promise.reject();
+    }
+
     return navigator.credentials.get(
     {
       password: true,
